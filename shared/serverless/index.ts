@@ -1,0 +1,1 @@
+export { withDefaultServerlessConfiguration } from './defaultServerlessConfiguration';
