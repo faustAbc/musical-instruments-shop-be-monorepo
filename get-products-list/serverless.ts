@@ -1,14 +1,15 @@
 import type { AWS } from '@serverless/typescript';
-
+import { withDefaultServerlessConfiguration } from 'shared/serverless';
 import getProductsList from '@functions/get-products-list';
 
-const serverlessConfiguration: AWS = {
+const serverlessConfiguration = {
   service: 'get-products-list',
   frameworkVersion: '3',
   plugins: ['serverless-esbuild'],
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',
+    profile: 'trials',
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
@@ -32,6 +33,6 @@ const serverlessConfiguration: AWS = {
       concurrency: 10,
     },
   },
-};
+} satisfies AWS;
 
-module.exports = serverlessConfiguration;
+module.exports = withDefaultServerlessConfiguration(serverlessConfiguration);

@@ -1,7 +1,24 @@
+import { JSONSchemaType } from 'ajv';
+import { Product } from 'shared/models/Product';
+export interface GetProductsListDto {
+  data: Product[];
+}
+
 export default {
   type: 'object',
   properties: {
-    name: { type: 'string' }
+    data: {
+      type: 'array',
+      items: {
+        required: ['test'],
+        type: 'object',
+        properties: {
+          test: {
+            type: 'string',
+          },
+        },
+      },
+    },
   },
-  required: ['name']
-} as const;
+  required: ['data'],
+} satisfies JSONSchemaType<GetProductsListDto>;
