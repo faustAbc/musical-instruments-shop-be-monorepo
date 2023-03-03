@@ -1,3 +1,1 @@
-import * as data from './data';
-
-export default { data };
+export * as data from './data';

@@ -1,5 +1,3 @@
-import * as CartItem from './CartItem';
-import * as Order from './Order';
-import * as Product from './Product';
-
-export default { CartItem, Order, Product };
+export * as CartItem from './CartItem';
+export * as Order from './Order';
+export * as Product from './Product';

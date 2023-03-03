@@ -13,3 +13,4 @@ export const AvailableProductSchema = ProductSchema.shape({
 
 export type Product = Yup.InferType<typeof ProductSchema>;
 export type AvailableProduct = Yup.InferType<typeof AvailableProductSchema>;
+export type GetProductsListDto = Product[];
