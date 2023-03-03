@@ -10,7 +10,7 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "peerDependencies": {
     "typescript": "^4.9.5",
     "yup": "^1.0.2"
   }

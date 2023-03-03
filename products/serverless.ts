@@ -1,14 +1,14 @@
 import type { AWS } from '@serverless/typescript';
 import { withDefaultServerlessConfiguration } from 'shared';
-import getProductsList from '@functions/get-products-list';
+import * as functions from '@functions/index';
 
 const serverlessConfiguration = {
-  service: 'get-products-list',
+  service: 'products',
   frameworkVersion: '3',
   plugins: ['serverless-esbuild'],
   provider: {
     name: 'aws',
-    runtime: 'nodejs14.x',
+    runtime: 'nodejs18.x',
     profile: 'trials',
     apiGateway: {
       minimumCompressionSize: 1024,
@@ -19,7 +19,7 @@ const serverlessConfiguration = {
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
     },
   },
-  functions: { getProductsList },
+  functions,
   package: { individually: true },
   custom: {
     esbuild: {
@@ -27,7 +27,7 @@ const serverlessConfiguration = {
       minify: false,
       sourcemap: true,
       exclude: ['aws-sdk'],
-      target: 'node14',
+      target: 'node18',
       define: { 'require.resolve': undefined },
       platform: 'node',
       concurrency: 10,

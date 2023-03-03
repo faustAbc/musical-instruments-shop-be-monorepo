@@ -1,7 +1,9 @@
-import { JSONSchemaType } from 'ajv';
 import { GetProductsListDto } from 'shared/models/Product';
+import validator from '@middy/validator';
+import { JSONSchemaType } from 'ajv';
+import { transpileSchema } from '@middy/validator/transpile';
 
-export default {
+const responseSchema = {
   type: 'array',
   items: {
     required: ['description', 'price', 'title'],
@@ -31,3 +33,7 @@ export default {
     },
   },
 } satisfies JSONSchemaType<GetProductsListDto>;
+
+export default {
+  responseSchema: transpileSchema(responseSchema),
+} satisfies Parameters<typeof validator>[0];
