@@ -1,5 +1,5 @@
 import type { AWS } from '@serverless/typescript';
-import { withDefaultServerlessConfiguration } from 'shared/serverless';
+import { withDefaultServerlessConfiguration } from 'shared';
 import getProductsList from '@functions/get-products-list';
 
 const serverlessConfiguration = {

@@ -1,4 +1,4 @@
-import schema from './schema';
+// import schema from './schema';
 import { handlerPath } from '@libs/handler-resolver';
 import type { AWS } from '@serverless/typescript';
 
@@ -7,13 +7,13 @@ const getProductsListFunction: Required<AWS>['functions'][string] = {
   events: [
     {
       http: {
-        method: 'post',
+        method: 'get',
         path: 'products',
-        request: {
-          schemas: {
-            'application/json': schema,
-          },
-        },
+        // request: {
+        //   schemas: {
+        //     'application/json': schema,
+        //   },
+        // },
       },
     },
   ],
