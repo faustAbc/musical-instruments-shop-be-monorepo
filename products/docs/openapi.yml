@@ -11,7 +11,7 @@ tags:
   - name: products
     description: Products-related requests
 paths:
-  /products:
+  "/products":
     get:
       tags:
         - products
@@ -30,7 +30,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GeneralError'
-  /products/{productId}:
+  "/products/{productId}":
     get:
       tags:
         - products
