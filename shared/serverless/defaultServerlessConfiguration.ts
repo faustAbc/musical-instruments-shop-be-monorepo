@@ -9,6 +9,7 @@ const defaultServerlessConfiguration = {
   provider: {
     profile: 'trials',
   },
+  plugins: ['serverless-openapi-documenter'],
 } satisfies DeepPartial<AWS>;
 
 export const withDefaultServerlessConfiguration = (config: AWS) =>

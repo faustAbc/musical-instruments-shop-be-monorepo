@@ -6,10 +6,11 @@ export const getProductsById: Required<AWS>['functions'][string] = {
   handler: `${handlerPath(__dirname)}/handler.main`,
   events: [
     {
-      http: {
+      httpApi: {
         method: 'get',
-        path: 'products/{productId}',
-      },
+        path: '/products/{productId}',
+        documentation: {}
+      } as any,
     },
   ],
 };

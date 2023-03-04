@@ -1,5 +1,5 @@
 {
-  "name": "get-products-list",
+  "name": "products",
   "version": "1.0.0",
   "description": "Serverless aws-nodejs-typescript template",
   "main": "serverless.ts",
@@ -8,7 +8,8 @@
     "deploy": "sls deploy",
     "build:deploy": "tsc && yarn deploy",
     "build:watch": "tsc --watch",
-    "deps:upgrade-local": "yarn upgrade shared"
+    "deps:upgrade-local": "yarn upgrade shared",
+    "docs:generate": "serverless openapi generate"
   },
   "engines": {
     "node": "^18"
@@ -21,6 +22,7 @@
     "ajv": "^8.12.0",
     "deepmerge": "^4.3.0",
     "http-errors": "^2.0.0",
+    "serverless-openapi-documentation-v2": "^0.4.6",
     "shared": "file:../shared",
     "yup": "^1.0.2"
   },
@@ -33,6 +35,7 @@
     "json-schema-to-ts": "^1.5.0",
     "serverless": "^3.0.0",
     "serverless-esbuild": "^1.23.3",
+    "swagger-ui": "^4.17.0",
     "ts-node": "^10.4.0",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.9.5"

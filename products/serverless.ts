@@ -5,7 +5,7 @@ import * as functions from '@functions/index';
 const serverlessConfiguration = {
   service: 'products',
   frameworkVersion: '3',
-  plugins: ['serverless-esbuild'],
+  plugins: ['serverless-esbuild', 'serverless-openapi-documenter'],
   provider: {
     name: 'aws',
     runtime: 'nodejs18.x',
@@ -22,6 +22,7 @@ const serverlessConfiguration = {
   functions,
   package: { individually: true },
   custom: {
+  
     esbuild: {
       bundle: true,
       minify: false,
