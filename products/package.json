@@ -10,9 +10,9 @@
     "build:watch": "tsc --watch",
     "deps:upgrade-local": "yarn upgrade shared",
     "docs:generate": "serverless openapi generate",
-    "dev": "vite serve docs",
-    "build": "tsc && vite build --config docs/vite.config.js",
-    "preview": "vite preview  --config docs/vite.config.js"
+    "docs:dev": "vite --config docs/vite.config.js",
+    "docs:build": "tsc && vite build --config docs/vite.config.js",
+    "docs:preview": "vite preview  --config docs/vite.config.js"
   },
   "engines": {
     "node": "^18"
