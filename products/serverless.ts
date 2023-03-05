@@ -48,6 +48,7 @@ const serverlessConfiguration = {
             AllowCredentials: false,
             AllowHeaders: ['*'],
             AllowMethods: ['*'],
+            /** Only deployed documentation and and FE are allowed */
             AllowOrigins: [{ 'Fn::GetAtt': ['StaticSite', 'WebsiteURL'] }],
             ExposeHeaders: ['Date'],
             MaxAge: 3600,
@@ -56,6 +57,7 @@ const serverlessConfiguration = {
       },
     },
     Resources: {
+      /** Bucket for documentation */
       StaticSite: {
         Type: 'AWS::S3::Bucket',
         Properties: {

@@ -11,7 +11,9 @@
     "target": "ES2020",
     "outDir": "lib",
     "skipLibCheck": true,
-    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
+    /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
+    "esModuleInterop": true,
+    /* Add support for global Vitest variables */
     "types": ["vitest/globals"]
   },
   "include": ["src/**/*.ts", "serverless.ts"],

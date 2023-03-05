@@ -10,7 +10,6 @@ vitest.doMock('shared', () => ({ data: { products: [sampleProduct] } }));
 import { MakeParametersOptional } from '@libs/api-gateway';
 import { main } from './handler';
 
-
 const typedHandler = main as MakeParametersOptional<typeof main>;
 
 describe('get-products-by-id', () => {

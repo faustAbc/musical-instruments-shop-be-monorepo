@@ -11,5 +11,8 @@ const defaultServerlessConfiguration = {
   },
 } satisfies DeepPartial<AWS>;
 
+/** 
+ * @description Shared configuration for Serverless configuration
+ */
 export const withDefaultServerlessConfiguration = (config: AWS) =>
   merge(defaultServerlessConfiguration, config) as AWS;

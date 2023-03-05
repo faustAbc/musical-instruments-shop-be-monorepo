@@ -1,14 +1,13 @@
 {
-  "name": "shared",
+  "name": "@alexgusevserg/shared",
   "version": "1.0.0",
-  "description": "",
   "main": "dist",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "build:watch": "tsc --watch"
   },
-  "author": "",
+  "author": "alexgusevserg",
   "license": "ISC",
   "peerDependencies": {
     "typescript": "^4.9.5",
@@ -16,5 +15,17 @@
   },
   "devDependencies": {
     "typescript": "^4.9.5"
-  }
+  },
+  "description": "Shared data for musical shop app",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/faustAbc/musical-instruments-shop-be-monorepo.git"
+  },
+  "keywords": [
+    "shared"
+  ],
+  "bugs": {
+    "url": "https://github.com/faustAbc/musical-instruments-shop-be-monorepo/issues"
+  },
+  "homepage": "https://github.com/faustAbc/musical-instruments-shop-be-monorepo#readme"
 }
