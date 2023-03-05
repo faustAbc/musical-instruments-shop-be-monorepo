@@ -6,7 +6,7 @@ import { data } from 'shared';
 import httpErrors from 'http-errors';
 import { FromSchema } from 'json-schema-to-ts';
 
-const handler:  ValidatedEventAPIGatewayProxyEvent<false> = async (event) => {
+export const handler:  ValidatedEventAPIGatewayProxyEvent<false> = async (event) => {
   const path = event.pathParameters as FromSchema<typeof pathParameters>;
   const { productId } = path;
 

@@ -48,7 +48,7 @@ const serverlessConfiguration = {
             AllowCredentials: false,
             AllowHeaders: ['*'],
             AllowMethods: ['*'],
-            AllowOrigins: ['*'],
+            AllowOrigins: [{ 'Fn::GetAtt': ['StaticSite', 'WebsiteURL'] }],
             ExposeHeaders: ['Date'],
             MaxAge: 3600,
           },

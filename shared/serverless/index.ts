@@ -1,1 +1,1 @@
-export { withDefaultServerlessConfiguration } from './defaultServerlessConfiguration';
+export { withDefaultServerlessConfiguration, type DeepPartial } from './defaultServerlessConfiguration';

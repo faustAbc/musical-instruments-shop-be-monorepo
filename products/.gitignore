@@ -37,3 +37,6 @@ dist-ssr
 
 # Build directory of OpenAPI documentation
 docs-dist
+
+# Hanlders coverage output directory
+coverage

@@ -4,7 +4,6 @@
   "description": "Serverless aws-nodejs-typescript template",
   "main": "serverless.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "sls deploy",
     "build:deploy": "tsc && yarn deploy",
     "build:watch": "tsc --watch",
@@ -13,7 +12,9 @@
     "docs:dev": "vite --config docs/vite.config.js",
     "docs:build": "tsc && vite build --config docs/vite.config.js",
     "docs:preview": "vite preview  --config docs/vite.config.js",
-    "docs:deploy": "serverless deploy"
+    "docs:deploy": "serverless deploy",
+    "test:watch": "vitest watch --config test/vite.config.ts",
+    "test:coverage": "vitest --config test/vite.config.ts run --coverage"
   },
   "engines": {
     "node": "^18"
@@ -36,16 +37,17 @@
     "@types/aws-lambda": "^8.10.71",
     "@types/http-errors": "^2.0.1",
     "@types/node": "^18",
+    "@vitest/coverage-c8": "^0.29.2",
     "esbuild": "^0.17.10",
     "json-schema-to-ts": "^1.5.0",
     "serverless": "^3.0.0",
     "serverless-esbuild": "^1.23.3",
-    "serverless-single-page-app-plugin": "^1.0.4",
     "swagger-ui": "4.5.2",
     "ts-node": "^10.4.0",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.9.5",
-    "vite": "^4.1.0"
+    "vite": "^4.1.0",
+    "vitest": "^0.29.2"
   },
   "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
   "license": "MIT"

@@ -5,6 +5,7 @@ import type {
 } from 'aws-lambda';
 import deepmerge from 'deepmerge';
 import type { FromSchema, JSONSchema } from 'json-schema-to-ts';
+import { DeepPartial } from 'shared/dist';
 
 type ValidatedAPIGatewayProxyEvent<S extends JSONSchema> = Omit<
   APIGatewayProxyEvent,
@@ -42,3 +43,10 @@ export const formatJSONResponse = (
     },
     propsToOverride,
   );
+
+
+export type MakeParametersOptional<Fn> = Fn extends (
+  ...args: infer FnArgs
+) => any
+  ? (...args: DeepPartial<FnArgs>) => any
+  : never;
