@@ -7,7 +7,7 @@ const sampleProduct = {
 
 vitest.doMock('shared', () => ({ data: { products: [sampleProduct] } }));
 
-import { DeepPartial } from 'shared/dist';
+import { DeepPartial } from '@alexgusevserg/shared';
 import { main } from './handler';
 
 type MakeParametersOptional<Fn> = Fn extends (...args: infer FnArgs) => any

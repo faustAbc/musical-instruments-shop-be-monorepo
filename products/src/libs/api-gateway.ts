@@ -1,3 +1,4 @@
+import { DeepPartial } from '@alexgusevserg/shared';
 import type {
   APIGatewayProxyEvent,
   APIGatewayProxyResult,
@@ -5,7 +6,6 @@ import type {
 } from 'aws-lambda';
 import deepmerge from 'deepmerge';
 import type { FromSchema, JSONSchema } from 'json-schema-to-ts';
-import { DeepPartial } from 'shared/dist';
 
 type ValidatedAPIGatewayProxyEvent<S extends JSONSchema> = Omit<
   APIGatewayProxyEvent,

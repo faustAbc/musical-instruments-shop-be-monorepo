@@ -1,20 +1,21 @@
 {
   "name": "@alexgusevserg/shared",
-  "version": "1.0.0",
-  "main": "dist",
+  "version": "1.0.5",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "build:watch": "tsc --watch"
+    "build:watch": "tsc --watch",
+    "prepublish": "npm run build && npm version patch"
   },
   "author": "alexgusevserg",
   "license": "ISC",
   "peerDependencies": {
     "typescript": "^4.9.5",
     "yup": "^1.0.2"
-  },
-  "devDependencies": {
-    "typescript": "^4.9.5"
   },
   "description": "Shared data for musical shop app",
   "repository": {

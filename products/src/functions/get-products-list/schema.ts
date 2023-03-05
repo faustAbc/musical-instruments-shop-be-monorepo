@@ -1,7 +1,7 @@
-import { GetProductsListDto } from 'shared/models/Product';
 import validator from '@middy/validator';
 import { JSONSchemaType } from 'ajv';
 import { transpileSchema } from '@middy/validator/transpile';
+import { GetProductsListDto } from '@alexgusevserg/shared';
 
 const responseSchema = {
   type: 'array',

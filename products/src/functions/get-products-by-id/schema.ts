@@ -1,7 +1,7 @@
 import validator from '@middy/validator';
 import { JSONSchemaType } from 'ajv';
-import { Product } from 'shared/models/Product';
 import { transpileSchema } from '@middy/validator/transpile';
+import { Product } from '@alexgusevserg/shared';
 
 interface PathParameters {
   productId: NonNullable<Product['id']>;

@@ -1,11 +1,16 @@
 import type { AWS } from '@serverless/typescript';
-import { withDefaultServerlessConfiguration } from 'shared';
+import { withDefaultServerlessConfiguration } from '@alexgusevserg/shared';
 import * as functions from '@functions/index';
 
 const serverlessConfiguration = {
   service: 'products',
   frameworkVersion: '3',
   plugins: ['serverless-esbuild', 'serverless-s3-sync'],
+  params: {
+    default: {
+      FEStackNameParameter: 'my-store-app-dev',
+    },
+  },
   provider: {
     name: 'aws',
     runtime: 'nodejs18.x',
@@ -49,7 +54,23 @@ const serverlessConfiguration = {
             AllowHeaders: ['*'],
             AllowMethods: ['*'],
             /** Only deployed documentation and and FE are allowed */
-            AllowOrigins: [{ 'Fn::GetAtt': ['StaticSite', 'WebsiteURL'] }],
+            AllowOrigins: [
+              { 'Fn::GetAtt': ['StaticSite', 'WebsiteURL'] },
+              {
+                'Fn::Join': [
+                  '',
+                  [
+                    'https://',
+                    {
+                      'Fn::ImportValue': {
+                        'Fn::Sub':
+                          '${param:FEStackNameParameter}::WebAppCloudFrontDistribution::DomainName',
+                      },
+                    },
+                  ],
+                ],
+              },
+            ],
             ExposeHeaders: ['Date'],
             MaxAge: 3600,
           },

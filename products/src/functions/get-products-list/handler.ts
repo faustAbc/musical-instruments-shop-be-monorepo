@@ -1,7 +1,7 @@
 import type { ValidatedEventAPIGatewayProxyEvent } from '@libs/api-gateway';
 import { formatJSONResponse } from '@libs/api-gateway';
 import { middyfy } from '@libs/lambda';
-import { data } from 'shared';
+import { data } from '@alexgusevserg/shared';
 
 const handler: ValidatedEventAPIGatewayProxyEvent<false> = async () =>
   formatJSONResponse(data.products);

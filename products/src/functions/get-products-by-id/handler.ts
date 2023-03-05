@@ -2,7 +2,7 @@ import validationSchema, { pathParameters } from './schema';
 import type { ValidatedEventAPIGatewayProxyEvent } from '@libs/api-gateway';
 import { formatJSONResponse } from '@libs/api-gateway';
 import { middyfy } from '@libs/lambda';
-import { data } from 'shared';
+import { data } from '@alexgusevserg/shared';
 import httpErrors from 'http-errors';
 import { FromSchema } from 'json-schema-to-ts';
 
