@@ -7,12 +7,10 @@
     "deploy": "sls deploy",
     "build:deploy": "tsc && yarn deploy",
     "build:watch": "tsc --watch",
-    "deps:upgrade-local": "yarn upgrade shared",
-    "docs:generate": "serverless openapi generate",
+    "deps:upgrade-local": "yarn upgrade @alexgusevserg/shared",
     "docs:dev": "vite --config docs/vite.config.js",
     "docs:build": "tsc && vite build --config docs/vite.config.js",
     "docs:preview": "vite preview  --config docs/vite.config.js",
-    "docs:deploy": "serverless deploy",
     "test:watch": "vitest watch --config test/vite.config.ts",
     "test:coverage": "vitest --config test/vite.config.ts run --coverage"
   },
