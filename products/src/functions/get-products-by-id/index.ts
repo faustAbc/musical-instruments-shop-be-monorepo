@@ -9,8 +9,7 @@ export const getProductsById: Required<AWS>['functions'][string] = {
       httpApi: {
         method: 'get',
         path: '/products/{productId}',
-        documentation: {}
-      } as any,
+      } ,
     },
   ],
 };

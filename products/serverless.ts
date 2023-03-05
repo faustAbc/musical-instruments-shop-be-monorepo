@@ -5,7 +5,7 @@ import * as functions from '@functions/index';
 const serverlessConfiguration = {
   service: 'products',
   frameworkVersion: '3',
-  plugins: ['serverless-esbuild', 'serverless-openapi-documenter'],
+  plugins: ['serverless-esbuild', 'serverless-s3-sync'],
   provider: {
     name: 'aws',
     runtime: 'nodejs18.x',
@@ -22,7 +22,13 @@ const serverlessConfiguration = {
   functions,
   package: { individually: true },
   custom: {
-  
+    siteName: 'products-openapi-docs',
+    s3Sync: [
+      {
+        bucketName: '${self:custom.siteName}',
+        localDir: 'docs-dist',
+      },
+    ],
     esbuild: {
       bundle: true,
       minify: false,
@@ -32,6 +38,64 @@ const serverlessConfiguration = {
       define: { 'require.resolve': undefined },
       platform: 'node',
       concurrency: 10,
+    },
+  },
+  resources: {
+    extensions: {
+      HttpApi: {
+        Properties: {
+          CorsConfiguration: {
+            AllowCredentials: false,
+            AllowHeaders: ['*'],
+            AllowMethods: ['*'],
+            AllowOrigins: ['*'],
+            ExposeHeaders: ['Date'],
+            MaxAge: 3600,
+          },
+        },
+      },
+    },
+    Resources: {
+      StaticSite: {
+        Type: 'AWS::S3::Bucket',
+        Properties: {
+          AccessControl: 'PublicRead',
+          BucketName: '${self:custom.siteName}',
+          WebsiteConfiguration: {
+            IndexDocument: 'index.html',
+          },
+        },
+      },
+      StaticSiteS3BucketPolicy: {
+        Type: 'AWS::S3::BucketPolicy',
+        Properties: {
+          Bucket: {
+            Ref: 'StaticSite',
+          },
+          PolicyDocument: {
+            Statement: [
+              {
+                Sid: 'PublicReadGetObject',
+                Effect: 'Allow',
+                Principal: '*',
+                Action: ['s3:GetObject'],
+                Resource: {
+                  'Fn::Join': [
+                    '',
+                    [
+                      'arn:aws:s3:::',
+                      {
+                        Ref: 'StaticSite',
+                      },
+                      '/*',
+                    ],
+                  ],
+                },
+              },
+            ],
+          },
+        },
+      },
     },
   },
 } satisfies AWS;
