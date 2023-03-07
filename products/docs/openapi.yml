@@ -5,7 +5,7 @@ info:
     API documentation for Products service
   version: 1.0.0
 servers:
-  - url: https://7igy9z1mm5.execute-api.us-east-1.amazonaws.com
+  - url: https://at6mhaetcd.execute-api.us-east-1.amazonaws.com
     description: Deployed lambda
 tags:
   - name: products

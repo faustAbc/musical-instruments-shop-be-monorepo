@@ -12,7 +12,8 @@
     "docs:build": "tsc && vite build --config docs/vite.config.js",
     "docs:preview": "vite preview  --config docs/vite.config.js",
     "test:watch": "vitest watch --config test/vite.config.ts",
-    "test:coverage": "vitest --config test/vite.config.ts run --coverage"
+    "test:coverage": "vitest --config test/vite.config.ts run --coverage",
+    "sls-remove": "serverless remove"
   },
   "engines": {
     "node": "^18"

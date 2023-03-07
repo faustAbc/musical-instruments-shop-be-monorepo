@@ -3,7 +3,7 @@ import { MiddlewareObj } from '@middy/core';
 import { HttpError } from 'http-errors';
 
 /**
- * @description Maps error to correct object for AWS Gateway 
+ * @description Maps error to correct object for AWS Gateway
  */
 const errorToDto = (): MiddlewareObj<any, any, HttpError> => ({
   onError: (request) => {
