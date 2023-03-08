@@ -1,0 +1,113 @@
+openapi: 3.0.3
+info:
+  title: Products service API
+  description: |-
+    API documentation for Products service
+  version: 1.0.0
+servers:
+  - url: https://at6mhaetcd.execute-api.us-east-1.amazonaws.com
+    description: Deployed lambda
+tags:
+  - name: products
+    description: Products-related requests
+paths:
+  "/products":
+    get:
+      tags:
+        - products
+      summary: Get products list
+      operationId: getProductsList
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Products'
+        '422':
+          description: Invalid request format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+  "/products/{productId}":
+    get:
+      tags:
+        - products
+      summary: Get product by Id
+      operationId: getProductsById
+      parameters:
+        - name: productId
+          in: path
+          description: ID of product to return
+          required: true
+          schema:
+            type: string
+            format: uuid
+          example: 7567ec4b-b10c-48c5-9345-fc73c48a80aa
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '422':
+          description: Invalid request format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '404':
+          description: Product not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+              example: 
+                error:
+                  message: Product with Id 7567ec4b-b10c-48c5-9345-fc73c48a80aa_ was not found
+                  statusCode: 404
+                  name: NotFoundError
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: "7567ec4b-b10c-48c5-9345-fc73c48a80aa"
+        description:
+          type: string
+          example: "Short Product Description1"
+        price:
+          type: integer
+          format: int32
+          example: 7
+        title:
+          type: string
+          example: ProductOne
+    GeneralError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+              format: text
+              example: "Invalid or malformed JSON was provided"
+            statusCode:
+              type: integer
+              format: httpCode
+              example: 422
+            quantity:
+              type: string
+              example: "UnprocessableEntityError"
+    Products:
+      type: array
+      items:
+        $ref: '#/components/schemas/Product'
+  
+  
